@@ -73,6 +73,7 @@ module HTTPI
         end
 
         opts[:ssl_version] = ssl.ssl_version if ssl.ssl_version
+        opts[:ciphers] = ssl.ciphers.join(":") if ssl.ciphers
 
         opts
       end

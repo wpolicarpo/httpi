@@ -90,6 +90,18 @@ module HTTPI
         @ssl_version = version
       end
 
+      # Returns the SSL ciphers. Defaults to <tt>nil</tt>.
+      def ciphers
+        @ciphers ||= nil
+      end
+
+      # Sets the SSL ciphers. Expects a <tt>String</tt> or an <tt>Array</tt>.
+      def ciphers=(ciphers)
+        requested_ciphers = ciphers.split(":") if ciphers.is_a?(String)
+
+        @ciphers = requested_ciphers
+      end
+
       # Returns an <tt>OpenSSL::X509::Certificate</tt> for the +cert_file+.
       def cert
         @cert ||= (OpenSSL::X509::Certificate.new File.read(cert_file) if cert_file)

@@ -182,6 +182,7 @@ module HTTPI
         end
 
         @client.ssl_version = ssl.ssl_version if ssl.ssl_version
+        @client.ciphers = ssl.ciphers.join(":") if ssl.ciphers
       end
 
       def ssl_cert_store(ssl)

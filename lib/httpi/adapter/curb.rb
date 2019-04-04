@@ -118,6 +118,7 @@ module HTTPI
           @client.certpassword = ssl.cert_key_password
 
           @client.ssl_verify_peer = ssl.verify_mode == :peer
+          @client.setopt(Curl::CURLOPT_SSL_CIPHER_LIST, ssl.ciphers.join(":")) if ssl.ciphers
         end
 
         @client.ssl_version = case ssl.ssl_version

@@ -78,6 +78,7 @@ module HTTPI
         end
 
         @client.ssl_config.ssl_version = ssl.ssl_version.to_s if ssl.ssl_version
+        @client.ssl_config.ciphers = ssl.ciphers.join(":") if ssl.ciphers
       end
 
       def respond_with(response)
